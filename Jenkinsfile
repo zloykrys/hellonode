@@ -10,11 +10,17 @@ node {
     stage('Build image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
+	script {
+	   env.DOCKER_HOST="unix:$XDG_RUNTIME_DIR/podman/podman.sock"
+	}
 
         app = docker.build("hellonode")
     }
     stage('Scan local image') {
-	neuvector registrySelection: 'Local', repository: 'jenkins/hellonode', tag: 'latest',  controllerEndpointUrlSelection: 'controller'
+	script {
+	   env.DOCKER_HOST="unix:$XDG_RUNTIME_DIR/podman/podman.sock"
+	}
+	neuvector registrySelection: 'Local', repository: 'jenkins/hellonode', tag: 'latest'
     }
 
     splunkins.archive("**/*.log", null, false, "10MB")
