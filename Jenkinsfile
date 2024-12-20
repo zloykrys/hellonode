@@ -18,7 +18,7 @@ node {
     }
     stage('Scan local image') {
 	script {
-	   env.DOCKER_HOST='unix:\$XDG_RUNTIME_DIR/podman/podman.sock'
+	   env.DOCKER_HOST='unix:$XDG_RUNTIME_DIR/podman/podman.sock'
 	}
 	neuvector registrySelection: 'Local', repository: 'jenkins/hellonode', tag: 'latest', controllerEndpointUrlSelection: 'controller'
     }
