@@ -13,6 +13,9 @@ node {
 
         app = docker.build("hellonode")
     }
+    stage('Scan local image') {
+	neuvector registrySelection: 'Local', repository: 'hellonode'
+    }
 
     splunkins.archive("**/*.log", null, false, "10MB")
 }
