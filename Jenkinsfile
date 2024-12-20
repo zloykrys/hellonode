@@ -20,7 +20,7 @@ node {
 	script {
 	   env.DOCKER_HOST="unix:\$XDG_RUNTIME_DIR/podman/podman.sock"
 	}
-	neuvector registrySelection: 'Local', repository: 'jenkins/hellonode', tag: 'latest', controllerEndpointUrlSelection: 'controller'
+	neuvector registrySelection: 'Local', repository: 'jenkins/hellonode', tag: 'latest', controllerEndpointUrlSelection: ''
     }
 
     splunkins.archive("**/*.log", null, false, "10MB")
