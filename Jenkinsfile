@@ -10,16 +10,10 @@ node {
     stage('Build image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-	script {
-	   env.DOCKER_HOST='unix:$XDG_RUNTIME_DIR/podman/podman.sock'
-	}
 
         app = docker.build("hellonode")
     }
     stage('Scan local image') {
-	script {
-	   env.DOCKER_HOST='unix:$XDG_RUNTIME_DIR/podman/podman.sock'
-	}
 	neuvector registrySelection: 'Local', repository: 'jenkins/hellonode', tag: 'latest', controllerEndpointUrlSelection: 'controller'
     }
 
