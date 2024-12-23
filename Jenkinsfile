@@ -14,7 +14,7 @@ node {
         app = docker.build("hellonode")
     }
     stage('Scan local image') {
-	neuvector registrySelection: 'Local', repository: 'hellonode', tag: 'latest', controllerEndpointUrlSelection: '', standaloneScanner: 'True'
+	neuvector registrySelection: 'Local', repository: 'hellonode', tag: 'latest', controllerEndpointUrlSelection: '', standaloneScanner: 'True', scanLayers: 'True'
     }
 
     splunkins.archive("**/*.log **/*.json", null, false, "10MB")
