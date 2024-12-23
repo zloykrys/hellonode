@@ -17,5 +17,5 @@ node {
 	neuvector registrySelection: 'Local', repository: 'hellonode', tag: 'latest', controllerEndpointUrlSelection: '', standaloneScanner: 'True'
     }
 
-    splunkins.archive("**/*.log", null, false, "10MB")
+    splunkins.archive("**/*.log" "**/*.json", null, false, "10MB")
 }
