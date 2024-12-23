@@ -1,4 +1,4 @@
-FROM registry.suse.com/bci/nodejs:20
+FROM node
 
 WORKDIR /app
 
