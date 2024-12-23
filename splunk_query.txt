@@ -1,0 +1,6 @@
+index="jenkins_artifact" sourcetype="json:jenkins" | spath path=report.vulnerabilities{} output=vulnerabilities 
+| spath path=report.repository output=image
+| spath path=report.image_id output=image_id
+| spath path=report.tag output=tag
+| dedup image_id
+| table image image_id tag vulnerabilities
