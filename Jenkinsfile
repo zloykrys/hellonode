@@ -22,7 +22,7 @@ node {
 	//send coverage, each event contains max 50 class metrics
 	splunkins.sendCoverageReport(50)
 	//send all logs from workspace to splunk, with each file size limits to 10MB
-	splunkins.archive("*.json", null, false, "10MB")
+	splunkins.archive('**/*.json', '**/*.html', false, '10MB')
     	// splunkins.archive("**/*.json", null, false, "10MB")
     }
 
