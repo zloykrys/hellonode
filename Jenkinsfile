@@ -17,7 +17,7 @@ node {
 	neuvector registrySelection: 'Local', repository: 'hellonode', tag: 'latest', controllerEndpointUrlSelection: '', standaloneScanner: 'True', scanLayers: 'True'
     }
     stage('Send data to Splunk') {
-	splunkins.archive('**/*.json', '**/*.html', true, '10MB')
+	splunkins.archive('**/*.json', null, true, '10MB')
     	// splunkins.archive("**/*.json", null, false, "10MB")
     }
 

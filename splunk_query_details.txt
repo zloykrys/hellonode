@@ -1,0 +1,13 @@
+index="jenkins_artifact" sourcetype="json:jenkins" | spath path=report.vulnerabilities{} output=vulnerabilities
+| spath path=report.repository output=image
+| spath path=report.image_id output=image_id
+| spath path=report.tag output=tag
+| spath output=vname report.vulnerabilities{}.name
+| spath output=score_v3 report.vulnerabilities{}.score_v3
+| spath output=severity report.vulnerabilities{}.severity
+| spath output=vectors_v3 report.vulnerabilities{}.vectors_v3
+| spath output=package_name report.vulnerabilities{}.package_name
+| spath output=package_version report.vulnerabilities{}.package_version
+| spath output=fixed_version report.vulnerabilities{}.fixed_version
+| dedup image_id
+| table image image_id tag vname score_v3 severity vectors_v3 package_name package_version fixed_version
